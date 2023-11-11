@@ -1,0 +1,14 @@
+
+{% load static %}
+{% load socialaccount %} {% providers_media_js %}
+
+
+<div class="card p-3" >
+    <h2 class="title-section">Login <span class="marked">Ho Gmail</span> Hodi bele aplly ba vaga</h2>
+    <div class="divider"></div>
+    <p>Asesu ba ba portal rekrutamentu online , ho ita bo'ot nia conta gmail ne'ebe ativu</p>
+    <a href="{% provider_login_url 'google' next='/' process='login' %}?email_reset=1" class="btn btn-primary">Login to GMAIL</a> <BR>
+  
+  
+  </div>
+  

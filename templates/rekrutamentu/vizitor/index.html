@@ -1,0 +1,99 @@
+{% extends 'rekrutamentu/vizitor/baze.html' %}
+{% block content %}
+{% load fegt9_mpg_proteksaun_url %}
+
+    <div class="page-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9 py-1">
+            <div>
+              <h4 class="title-section">List   <span class="marked">of </span>  Vacancy</h4> 
+              <h5 style ='float:right'><b> Total Vaga (2)</b></h5>
+            </div>
+           
+            <div class="divider"></div>
+          
+            <p class="mb-5">
+              
+              
+              <table style = "font-size: 13px;" class="table table-sm table-bordered ">
+               <tr>
+                <th>
+                  No
+                </th>
+                <th>
+                  Title
+                </th>
+                <th>
+                  #
+                </th>
+               </tr>
+
+
+
+
+               {% for dados in vaga %}
+
+
+
+               <tr>
+                <td>
+                  {{forloop.counter}}
+                </td>
+                <th>
+               {{dados.title}}
+                </td>
+                <td>
+                  {% if user.is_authenticated %}   <a href="{% url 'rekrutamentu:detallu' dados.id|encrypt_id_tag %}" class="btn btn-sm  btn-outline-info" >More Details & Aplly Vaga</a> {% else %}    <a href="{% url 'rekrutamentu:detallu' dados.id|encrypt_id_tag %}" class="btn btn-sm  btn-outline-info"  >More Details</a>  {% endif %}
+
+                </td>
+               </tr>
+
+
+
+               {% endfor %}
+
+
+           
+           
+                </table>
+            
+            </p>
+        
+          </div>
+
+
+
+          <div class="col-lg-3 py-1 ">
+
+
+
+{% if user.is_authenticated %}
+<div class="card p-3" >
+  <h4 class="title-section">Vaga  <span class="marked">CVTL</span> ne'ebe ita bo'ot aplly ona</h4>
+  <div class="divider"></div>
+  <p>Total Vaga ne'ebe ita bo'ot apply hamutuk ({{totalapply}})</p>
+  <a href="" class="btn btn-primary">Hare Lista</a> <BR>
+
+
+</div>
+
+{% else %}
+
+{% include 'rekrutamentu/vizitor/loginhogmail.html' %}
+
+
+
+{% endif %}
+  
+    
+
+        </div>
+
+
+
+
+      </div> <!-- .container -->
+    </div> <!-- .page-section -->
+  
+    {% endblock content %}

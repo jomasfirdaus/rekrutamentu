@@ -1,0 +1,113 @@
+{% extends 'utilizador/layout.html' %}
+{% block content %}
+{% load fegt9_mpg_proteksaun_url %}
+
+		<!-- ============================================================== -->
+						<!-- pageheader  -->
+						<!-- ============================================================== -->
+						<div class="row">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="page-header">
+									<h2 class="pageheader-title">Lista Aplikante </h2>
+									<p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+									<div class="page-breadcrumb">
+										<nav aria-label="breadcrumb">
+											<ol class="breadcrumb">
+												<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">CVTL</a></li>
+												<li class="breadcrumb-item active" aria-current="page">Hris Painel</li>
+											</ol>
+
+                                            
+										</nav>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ============================================================== -->
+						<!-- end pageheader  -->
+						<!-- ============================================================== -->
+						<div class="ecommerce-widget">
+	
+				
+							<div class="row">
+								<!-- ============================================================== -->
+						  
+								<!-- ============================================================== -->
+	
+											  <!-- recent orders  -->
+								<!-- ============================================================== -->
+
+								
+					<br>					
+
+								<div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+
+					
+								
+									<div class="card">
+									
+                                     
+
+										<div class="card-body p-0">
+										<br>
+			<center>
+								<h5> {{aplikante.application.id}} Dokumentu husi Aplikante ho email {{aplikante.application.user.email}}  <br> Aplika ba vaga  : {{aplikante.application.job_post.title}} </h5>
+								                                                            <a href="{% url 'rekrutamentu:aplikanteaccepted' aplikante.application.id|encrypt_id_tag %}" class="btn btn-primary btn-sm" >  <i class="fas fa-list"></i> Pasa </a>
+
+															<a href="{% url 'rekrutamentu:aplikanterejected' aplikante.application.id|encrypt_id_tag %}" class="btn btn-warning btn-sm" >  <i class="fas fa-list"></i> La Pasa</a>
+
+								
+								</center>
+
+								<hr>
+						
+
+                   		<div class="table-responsive">
+												<table class="table table-sm">
+													<thead class="bg-light">
+														<tr class="border-0">
+															<th class="border-0">Nu</th>
+															<th class="border-0">Dokumentu</th>
+														</tr>
+													</thead>
+													<tbody>
+
+                                                        {% for dados in dokumentu %}
+														<tr>
+														
+															<td>{{forloop.counter}}</td>
+															 <td> <a href ="{{dados.upload_file.url}}" target="_blank"> {{dados.upload_file}} </a></td>
+											
+														</tr>
+                                                        {% endfor %}
+													
+													</tbody>
+												</table>
+											</div>
+								
+
+     
+                                </div>
+                            </div>
+
+										</div>
+									</div>
+								</div>
+								<!-- ============================================================== -->
+								<!-- end recent orders  -->
+	
+		
+								<!-- ============================================================== -->
+								<!-- ============================================================== -->
+								<!-- customer acquistion  -->
+								<!-- ============================================================== -->
+							
+								<!-- ============================================================== -->
+								<!-- end customer acquistion  -->
+								<!-- ============================================================== -->
+							</div>
+				
+						
+						</div>
+
+{% endblock content %}

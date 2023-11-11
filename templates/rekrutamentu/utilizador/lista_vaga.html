@@ -1,0 +1,128 @@
+{% extends 'utilizador/layout.html' %}
+{% block content %}
+{% load fegt9_mpg_proteksaun_url %}
+
+		<!-- ============================================================== -->
+						<!-- pageheader  -->
+						<!-- ============================================================== -->
+						<div class="row">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="page-header">
+									<h2 class="pageheader-title">Lista Vaga </h2>
+									<p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+									<div class="page-breadcrumb">
+										<nav aria-label="breadcrumb">
+											<ol class="breadcrumb">
+												<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">CVTL</a></li>
+												<li class="breadcrumb-item active" aria-current="page">Hris Painel</li>
+											</ol>
+
+                                            
+										</nav>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ============================================================== -->
+						<!-- end pageheader  -->
+						<!-- ============================================================== -->
+						<div class="ecommerce-widget">
+	
+				
+							<div class="row">
+								<!-- ============================================================== -->
+						  
+								<!-- ============================================================== -->
+	
+											  <!-- recent orders  -->
+								<!-- ============================================================== -->
+								<div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+									<div class="card">
+										<h5 class="card-header">Lista Vaga <a href="{% url 'rekrutamentu:postvaga' %}" class="btn btn-primary btn-sm float-right ">  <i class="fas fa-plus"></i> Post Vaga</a></h5>      
+                                        
+                                     
+										<div class="card-body p-0">
+											<div class="table-responsive">
+												<table class="table table-sm">
+													<thead class="bg-light">
+														<tr class="border-0">
+															<th class="border-0">Nu</th>
+															<th class="border-0">Titulu</th>
+															<th class="border-0">Deatline</th>
+															<th class="border-0">Status</th>
+															<th class="border-0">Aplikante</th>															
+															<th class="border-0">#</th>
+													
+														</tr>
+													</thead>
+													<tbody>
+
+                                                        {% for dados in listavaga %}
+														<tr>
+														
+															<td>{{forloop.counter}}</td>
+															<td>{{dados.title}}</td>
+															<td>{{dados.deadline}}</td>
+															<td> 
+                                                                {% if dados.publish_status == 'Draft' %}
+                                                                 <span class="badge-dot badge-brand mr-1"></span> 
+                                                                  {{dados.publish_status}}
+                                                                {% else %}
+                                                                <span class="badge-dot badge-success mr-1"></span>  {{dados.publish_status}}
+                                                                 {% endif %}
+                                                                
+                                                                </td>
+															<td>
+															   {% if dados.publish_status == 'Draft' %}
+                                                                  Seidauk publika
+                                                                {% else %}
+																 total aplikante ({{dados.totalaplikante}})
+                                                               
+                                                                 {% endif %}
+															</td>
+															<td>
+
+
+                                                                
+
+                                                                {% if dados.publish_status == 'Draft' %}
+                                                             <a href="{% url 'rekrutamentu:publikavaga' dados.id|encrypt_id_tag %}" class="btn btn-primary btn-sm" >  <i class=" fas fa-volume-up"></i> Publika vaga</a>
+                                                             <a href="{% url 'rekrutamentu:editvaga' dados.id|encrypt_id_tag %}" class="btn btn-primary btn-sm" >  <i class="fas fa-edit"></i> </a>
+                                                             <a href="{% url 'rekrutamentu:publikavaga' dados.id|encrypt_id_tag %}" class="btn btn-primary btn-sm" >  <i class="fas fa-trash"></i> </a>
+
+
+                                                               {% else %}
+                                                            <a href="{% url 'rekrutamentu:unpublikavaga' dados.id|encrypt_id_tag %}" class="btn btn-warning btn-sm" >  <i class="fas fa-list"></i> Muda ba draf</a>
+                                                            <a href="{% url 'rekrutamentu:listaplikantereview' dados.id|encrypt_id_tag %}" class="btn btn-primary btn-sm" >  <i class="fas fa-list"></i> Detallu Vaga</a>
+                                                               {% endif %}
+                                                               
+                                                             
+
+                                                            </td>
+														</tr>
+                                                        {% endfor %}
+													
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- ============================================================== -->
+								<!-- end recent orders  -->
+	
+		
+								<!-- ============================================================== -->
+								<!-- ============================================================== -->
+								<!-- customer acquistion  -->
+								<!-- ============================================================== -->
+							
+								<!-- ============================================================== -->
+								<!-- end customer acquistion  -->
+								<!-- ============================================================== -->
+							</div>
+				
+						
+						</div>
+
+{% endblock content %}

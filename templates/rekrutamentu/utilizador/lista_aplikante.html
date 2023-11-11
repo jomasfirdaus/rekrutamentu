@@ -1,0 +1,140 @@
+{% extends 'utilizador/layout.html' %}
+{% block content %}
+{% load fegt9_mpg_proteksaun_url %}
+
+		<!-- ============================================================== -->
+						<!-- pageheader  -->
+						<!-- ============================================================== -->
+						<div class="row">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="page-header">
+									<h2 class="pageheader-title">Lista Aplikante </h2>
+									<p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+									<div class="page-breadcrumb">
+										<nav aria-label="breadcrumb">
+											<ol class="breadcrumb">
+												<li class="breadcrumb-item"><a href="#" class="breadcrumb-link">CVTL</a></li>
+												<li class="breadcrumb-item active" aria-current="page">Hris Painel</li>
+											</ol>
+
+                                            
+										</nav>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ============================================================== -->
+						<!-- end pageheader  -->
+						<!-- ============================================================== -->
+						<div class="ecommerce-widget">
+	
+				
+							<div class="row">
+								<!-- ============================================================== -->
+						  
+								<!-- ============================================================== -->
+	
+											  <!-- recent orders  -->
+								<!-- ============================================================== -->
+
+								
+					<br>					
+
+								<div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+
+								<center><h5>Lista Aplikante ba vaga : {{vaga.title}} </h5></center>
+								
+									<div class="card">
+									
+                                     
+										<div class="card-body p-0">
+
+										<div class="tab-outline">
+
+
+
+                                <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                                    <li class="nav-item ">
+                                        <a href="{% url 'rekrutamentu:listaplikantereview' id  %}" class="nav-link {{tab_review}}" id="tab-outline-one" data-toggle="tab" href="#outline-one" role="tab" aria-controls="home" aria-selected="false">Review</a>
+                                    </li>
+
+									
+							
+                                    <li class="nav-item ">
+                                        <a href="{% url 'rekrutamentu:listaplikanterejected' id %}" class="nav-link {{tab_rejected}}  " id="tab-outline-two" data-toggle="tab" href="#outline-two" role="tab" aria-controls="profile" aria-selected="true">La Pasa</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a href="{% url 'rekrutamentu:listaplikanteaccepted' id %}" class="nav-link {{tab_accepted}} " id="tab-outline-three" data-toggle="tab" href="#outline-three" role="tab" aria-controls="contact" aria-selected="false">Pasa</a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content" id="myTabContent2">
+
+                                 
+
+                   		<div class="table-responsive">
+												<table class="table table-sm">
+													<thead class="bg-light">
+														<tr class="border-0">
+															<th class="border-0">Nu</th>
+															<th class="border-0">Data Aplly</th>
+															<th class="border-0">Email Aplikante</th>
+															<th class="border-0">Status</th>
+																<th class="border-0">Asaun</th>
+														</tr>
+													</thead>
+													<tbody>
+
+                                                        {% for dados in lista_aplikante %}
+														<tr>
+														
+															<td>{{forloop.counter}}</td>
+															 <td>{{dados.applied_at}}</td>
+															<td>{{dados.user.email}}</td>
+															<td>{{dados.status}}</td>
+														   
+															<td>
+
+
+                                                                
+
+                                                             
+
+															<a href="{% url 'rekrutamentu:listadokumentuaplikante' dados.id|encrypt_id_tag %}" class="btn btn-warning btn-sm" >  <i class="fas fa-list"></i> Dokumentu Aplikante</a>
+																												
+                                                             
+
+                                                            </td>
+														</tr>
+                                                        {% endfor %}
+													
+													</tbody>
+												</table>
+											</div>
+								
+
+     
+                                </div>
+                            </div>
+
+										</div>
+									</div>
+								</div>
+								<!-- ============================================================== -->
+								<!-- end recent orders  -->
+	
+		
+								<!-- ============================================================== -->
+								<!-- ============================================================== -->
+								<!-- customer acquistion  -->
+								<!-- ============================================================== -->
+							
+								<!-- ============================================================== -->
+								<!-- end customer acquistion  -->
+								<!-- ============================================================== -->
+							</div>
+				
+						
+						</div>
+
+{% endblock content %}

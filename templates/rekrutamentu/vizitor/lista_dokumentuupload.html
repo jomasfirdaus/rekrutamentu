@@ -1,0 +1,26 @@
+{% load basename %}
+  
+    <ul>
+        {% for attachment in dadosaplly %}
+        <li> {{forloop.counter}} . <a href="{{ attachment.upload_file.url }}" target="_blank"> {{ attachment.upload_file|basename }}</a></li> <hr>
+        {% empty %}
+            <li>No attachments found</li>
+        {% endfor %}
+
+<hr>
+        {% if dadosaplly == 'mamuk' %}
+
+ 
+        {% else %}
+        {% if item.useraplication == 'Pending' %}
+ 
+               <a href="{% url 'rekrutamentu:apllyavaga' encrypted_job_post_id %}" class="btn btn-primary float-right"> Aplly ba vaga </a>
+       {%else %}
+ 
+               <a href="{% url 'rekrutamentu:apllyavaga' encrypted_job_post_id %}" class="btn btn-primary float-right"> Kansela </a>
+       {% endif %}
+        {% endif %}
+
+    </ul>
+
+
